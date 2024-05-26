@@ -24,17 +24,14 @@ export const postRec = createAsyncThunk("todo/postRec", async (obj: Person) => {
     alert(e);
   }
 });
-export const delRec = createAsyncThunk(
-  "todo/delRec",
-  async (obj: Person, { getState }) => {
-    try {
-      const { data } = await axios.delete(`${url}/${obj._id}`);
-      return data;
-    } catch (e) {
-      alert(e);
-    }
+export const delRec = createAsyncThunk("todo/delRec", async (obj: Person) => {
+  try {
+    const { data } = await axios.delete(`${url}/${obj._id}`);
+    return data;
+  } catch (e) {
+    alert(e);
   }
-);
+});
 const TodoSlice = createSlice({
   name: "todo",
   initialState,
